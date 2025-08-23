@@ -1,8 +1,34 @@
+:root {
+    --font-xs: 1.2rem;
+    --font-sm: 1.4rem;
+    --font-base: 16rem;
+    --font-lg: 2rem;
+    --font-xl: 2.4rem;
+    --font-xxl: 3.2rem;
+
+    --spacing-xs: 0.4rem;
+    --spacing-sm: 0.8rem;
+    --spacing-md: 1.6rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 2.4rem;
+    --spacing-xxl: 3.2rem;
+
+    --color-primary: #212429;
+    --color-secondary: #fff;
 
 
- .montserrat-bold {
-     font-family: "Montserrat", sans-serif;
-     font-optical-sizing: auto;
-     font-weight: 700;
-     font-style: normal;
- }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+p {
+    font-weight: 400;
+}
