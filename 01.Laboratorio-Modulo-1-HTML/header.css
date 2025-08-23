@@ -1,7 +1,10 @@
 .top-nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     padding: var(--spacing-sm);
+    height: 6rem;
+    gap: var(--spacing-md);
+    align-items: center;
     border-bottom: 1px solid var(--color-primary);
 }
 
@@ -10,3 +13,15 @@
     display: none;
 }
 
+
+@media screen and (min-width: 900px) {
+
+    .top-nav-menu-links,
+    .top-nav-right {
+        display: flex;
+        text-transform: uppercase;
+        font-size: var(--font-sm);
+        gap: var(--spacing-md)
+    }
+
+}
