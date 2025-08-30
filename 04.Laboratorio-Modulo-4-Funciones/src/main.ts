@@ -1,7 +1,6 @@
 import "./style.css";
 
 import { numberTracker } from "./numberTracker";
-import { updateNumber } from "./utilities/updateNumber";
 import { validateInput } from "./utilities/validations";
 import {
 	updateHTML,
@@ -56,10 +55,11 @@ document.addEventListener("DOMContentLoaded", () => {
 					const errorMessage = validateInput(userValue, numberTracker);
 
 					if (!errorMessage) {
-						updateNumber(+userValue, numberTracker);
+						numberTracker.insertNumber(+userValue);
 						showCurrentNumber(numberTracker);
 						showOrHideElement(newNumberForm);
 						inputElement.value = "";
+						updateHTML(errorDiv, "");
 					} else {
 						showOrHideElement(errorDiv);
 						errorDiv.style.display = "block";
