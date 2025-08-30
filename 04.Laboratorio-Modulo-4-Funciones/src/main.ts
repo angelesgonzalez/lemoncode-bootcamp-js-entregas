@@ -69,16 +69,19 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	});
 
-	const hideHTMLelement = (element: HTMLElement) => {
-		element.classList.add("hidden");
+	// const hideHTMLelement = (element: HTMLElement) => {
+	// 	element.classList.add("hidden");
+	// };
+
+	const showOrHideElement = (element: HTMLElement) => {
+		element.classList.toggle("hidden");
 	};
 
 	showInsertBtn?.addEventListener("click", () => {
 		const newNumberForm = document.getElementById("newNumberForm");
 
 		if (newNumberForm) {
-			newNumberForm.classList.remove("hidden");
-			newNumberForm.classList.add("number-form");
+			showOrHideElement(newNumberForm);
 
 			newNumberForm.addEventListener("submit", (event) => {
 				event.preventDefault();
@@ -89,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					const userValue = inputElement.value;
 					updateNumber(+userValue, numberTracker);
 					showCurrentNumber(numberTracker);
-					hideHTMLelement(newNumberForm);
+					showOrHideElement(newNumberForm);
 				}
 			});
 		}
