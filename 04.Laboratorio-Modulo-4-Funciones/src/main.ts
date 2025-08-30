@@ -25,8 +25,31 @@ Si lo implementas en TypeScript en modo estricto, mejor que mejor.
   </div>
 
 
-  01 - funcion para cambiar los numberos
-  
+  01 - objeto para gestionar el numero tracker
+  02- agregar los elementos del dom a modificar
+  03-agregar un evento para cuando el usuario clica en reset, se llama a la funcion reset y se modifica
+  04-agregar un evento cuando el usuario hace click en next, se ensena el next
+  05- agregar un evento cuando el usuario click en previous, se ensena el previous
+
+
+
+
 
 */
 
+const numberTracker = {
+	currentNumber: 0,
+	nextNumber(): number {
+		return (this.currentNumber = this.currentNumber++);
+	},
+	previousNumber(): number {
+		return (this.currentNumber = this.currentNumber--);
+	},
+	insertNumber(newNumber: number): number {
+		return (this.currentNumber = newNumber);
+	},
+
+	resetNumberTracker(): number {
+		return (this.currentNumber = 0);
+	},
+};
