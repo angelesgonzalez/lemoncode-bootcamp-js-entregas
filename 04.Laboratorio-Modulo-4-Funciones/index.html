@@ -16,7 +16,7 @@
   </div>
 
   <div class="controlllers">
-    <div class="controllers-top">
+    <div class="controllers-top" id="controllersTop">
       <button id="resetNumber">Reset Numbers</button>
       <button id="previousNumber">Previous Number</button>
       <button id="nextNumber">Next Number</button>
@@ -30,6 +30,7 @@
     <label for="newNumber">Insert New Number</label>
     <input type="number" id="newNumber">
     <button type="submit" id="submitNumber">Change</button>
+    <div class="hidden error" id="error"></div>
   </form>
 
   <script type="module" src="/src/main.ts"></script>
