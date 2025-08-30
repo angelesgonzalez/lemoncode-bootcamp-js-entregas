@@ -10,9 +10,22 @@
 </head>
 
 <body>
-  <div class="turno-display">
-    <h1 class="numero-turno">01</h1>
-    <p class="texto-turno">Por favor, acérquese al mostrador</p>
+  <div class="number-display" id="numberDisplay">
+    <h1 class="number-turn" id="numberTurn">01</h1>
+    <p class="text-turn">Por favor, acérquese al mostrador</p>
+  </div>
+
+  <div class="manageNumbers">
+    <button id="resetNumber">Reset Numbers</button>
+    <button id="showInsert">Insert New Number</button>
+
+    <form class="hidden" id="newNumberForm">
+      <label for="newNumber">Insert New Number</label>
+      <input type="number" id="newNumber">
+      <button type="submit" id="submitNumber">Change</button>
+    </form>
+
+
   </div>
   <script type="module" src="/src/main.ts"></script>
 </body>

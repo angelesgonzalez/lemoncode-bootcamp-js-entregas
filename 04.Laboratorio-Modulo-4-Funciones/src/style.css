@@ -1,4 +1,4 @@
-.turno-display {
+.number-display {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,15 +10,19 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.numero-turno {
+.number-turn {
   font-size: 6rem;
   font-weight: bold;
   margin: 0;
 }
 
-.texto-turno {
+.text-turn {
   font-size: 2rem;
   font-weight: bold;
   margin: 0;
   text-align: center;
+}
+
+.hidden {
+  display: none;
 }
