@@ -1,14 +1,15 @@
 import "./style.css";
 
-interface NumberTracker {
-	currentNumber: number;
-	nextNumber(): number;
-	previousNumber(): number;
-	insertNumber(arg0: number): number;
-	resetNumberTracker(): number;
-}
+import { Tracker } from "./utilities/Tracker";
+import { updateNumber } from "./utilities/updateNumber";
+import { validateInput } from "./utilities/validations";
+import {
+	updateHTML,
+	showOrHideElement,
+	showCurrentNumber,
+} from "./utilities/DOMmanipulation";
 
-const numberTracker: NumberTracker = {
+const numberTracker: Tracker = {
 	currentNumber: 1,
 	nextNumber(): number {
 		return (this.currentNumber = ++this.currentNumber);
@@ -23,23 +24,6 @@ const numberTracker: NumberTracker = {
 	resetNumberTracker(): number {
 		return (this.currentNumber = 0);
 	},
-};
-
-const editCurrentNumber = (currentNumber: number): string =>
-	currentNumber.toString().padStart(2, "0");
-
-const showCurrentNumber = (numberTracker: NumberTracker) => {
-	const currentNumberEdited = editCurrentNumber(numberTracker.currentNumber);
-
-	const currentNumberDOM = document.getElementById("numberTurn");
-
-	if (currentNumberDOM) {
-		currentNumberDOM.innerText = currentNumberEdited;
-	}
-};
-
-const updateNumber = (userValue: number, tracker: NumberTracker) => {
-	tracker.insertNumber(userValue);
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -72,15 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	});
 
-	const showOrHideElement = (element: HTMLElement) => {
-		element.classList.toggle("hidden");
-	};
-
-	const updateHTML = (element: HTMLElement, message: string) => {
-		element.innerText = `${message}`;
-	};
-
-
 	showInsertBtn?.addEventListener("click", () => {
 		const newNumberForm = document.getElementById("newNumberForm");
 
@@ -92,12 +67,20 @@ document.addEventListener("DOMContentLoaded", () => {
 				const inputElement = document.getElementById(
 					"newNumber"
 				) as HTMLInputElement | null;
-				if (inputElement) {
+				
+                if (inputElement) {
 					const userValue = inputElement.value;
-					validateInput(errorDiv, +userValue, numberTracker);
-					updateNumber(+userValue, numberTracker);
-					showCurrentNumber(numberTracker);
-					showOrHideElement(newNumberForm);
+					const errorMessage = validateInput(userValue, numberTracker);
+
+					if (!errorMessage) {
+						updateNumber(+userValue, numberTracker);
+						showCurrentNumber(numberTracker);
+						showOrHideElement(newNumberForm);
+					} else {
+						showOrHideElement(errorDiv);
+						errorDiv.style.display = "block";
+						updateHTML(errorDiv, errorMessage);
+					}
 				}
 			});
 		}
