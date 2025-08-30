@@ -61,10 +61,10 @@ interface numberTracker {
 const numberTracker: numberTracker = {
 	currentNumber: 1,
 	nextNumber(): number {
-		return (this.currentNumber = this.currentNumber++);
+		return (this.currentNumber = ++this.currentNumber);
 	},
 	previousNumber(): number {
-		return (this.currentNumber = this.currentNumber--);
+		return (this.currentNumber = --this.currentNumber);
 	},
 	insertNumber(newNumber: number): number {
 		return (this.currentNumber = newNumber);
@@ -88,4 +88,14 @@ const showCurrentNumber = (numberTracker: numberTracker) => {
 
 document.addEventListener("DOMContentLoaded", () => {
 	showCurrentNumber(numberTracker);
+	const nextNumberbtn = document.getElementById("nextNumber");
+	const previousNumberbtn = document.getElementById("previousNumber");
+
+	nextNumberbtn?.addEventListener("click", () => {
+		numberTracker.nextNumber();
+		showCurrentNumber(numberTracker);
+    });
+    
+    
+	previousNumberbtn?.addEventListener("click", numberTracker.previousNumber);
 });
