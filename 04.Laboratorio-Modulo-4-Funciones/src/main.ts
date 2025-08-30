@@ -18,13 +18,6 @@ Pista: Puedes usar la función padStart, la cual nos ayuda a añadir ceros o cua
 Si lo implementas en TypeScript en modo estricto, mejor que mejor.
 
 
-  <div class="number-display" id="numberDisplay">
-    <h1 class="number-turn" id="numberTurn">01</h1>
-    <p class="text-turn">Por favor, acérquese al mostrador</p>
-        <button id="resetNumber">Reset Numbers</button>
-  </div>
-
-
   01 - objeto para gestionar el numero tracker
   02- agregar los elementos del dom a modificar
   03-agregar un evento para cuando el usuario clica en reset, se llama a la funcion reset y se modifica
@@ -32,13 +25,41 @@ Si lo implementas en TypeScript en modo estricto, mejor que mejor.
   05- agregar un evento cuando el usuario click en previous, se ensena el previous
 
 
+<div class="number-display" id="numberDisplay">
+    <h1 class="number-turn" id="numberTurn">01</h1>
+    <p class="text-turn">Por favor, acérquese al mostrador</p>
+  </div>
 
+  <div class="controlllers">
+    <div>
+      <button id="previousNumber">Previous Number</button>
+      <button id="nextNumber">Next Number</button>
+    </div>
+    <button id="resetNumber">Reset Numbers</button>
+    <button id="showInsert">Insert New Number</button>
+
+    <form class="hidden" id="newNumberForm">
+      <label for="newNumber">Insert New Number</label>
+      <input type="number" id="newNumber">
+      <button type="submit" id="submitNumber">Change</button>
+    </form>
+
+
+  </div>
 
 
 */
 
-const numberTracker = {
-	currentNumber: 0,
+interface numberTracker {
+	currentNumber: number;
+	nextNumber(): number;
+	previousNumber(): number;
+	insertNumber(arg0: number): number;
+	resetNumberTracker(): number;
+}
+
+const numberTracker: numberTracker = {
+	currentNumber: 1,
 	nextNumber(): number {
 		return (this.currentNumber = this.currentNumber++);
 	},
@@ -53,3 +74,18 @@ const numberTracker = {
 		return (this.currentNumber = 0);
 	},
 };
+
+const showCurrentNumber = (numberTracker: numberTracker) => {
+	const currentNumber = `${numberTracker.currentNumber}`;
+	const currentNumberEdited = currentNumber.padStart(2, "0");
+
+	const currentNumberDOM = document.getElementById("numberTurn");
+
+	if (currentNumberDOM) {
+		currentNumberDOM.innerText = currentNumberEdited;
+	}
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+	showCurrentNumber(numberTracker);
+});
