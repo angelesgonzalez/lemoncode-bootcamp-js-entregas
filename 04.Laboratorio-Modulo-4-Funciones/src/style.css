@@ -26,3 +26,7 @@
 .hidden {
   display: none;
 }
+
+.number-form {
+  display: flex;
+}

@@ -86,16 +86,49 @@ const showCurrentNumber = (numberTracker: numberTracker) => {
 	}
 };
 
+const updateNumber = () => {
+	console.log("funcion conectada");
+};
+
 document.addEventListener("DOMContentLoaded", () => {
 	showCurrentNumber(numberTracker);
-	const nextNumberbtn = document.getElementById("nextNumber");
-	const previousNumberbtn = document.getElementById("previousNumber");
 
-	nextNumberbtn?.addEventListener("click", () => {
+	const nextNumberBtn = document.getElementById("nextNumber");
+	const previousNumberBtn = document.getElementById("previousNumber");
+	const resetNumberBtn = document.getElementById("resetNumber");
+	const showInsertBtn = document.getElementById("showInsert");
+
+	nextNumberBtn?.addEventListener("click", () => {
 		numberTracker.nextNumber();
 		showCurrentNumber(numberTracker);
-    });
-    
-    
-	previousNumberbtn?.addEventListener("click", numberTracker.previousNumber);
+	});
+
+	previousNumberBtn?.addEventListener("click", () => {
+		if (numberTracker.currentNumber != 0) {
+			numberTracker.previousNumber();
+			showCurrentNumber(numberTracker);
+		}
+	});
+
+	resetNumberBtn?.addEventListener("click", () => {
+		if (numberTracker.currentNumber != 0) {
+			numberTracker.resetNumberTracker();
+			showCurrentNumber(numberTracker);
+		}
+	});
+
+	showInsertBtn?.addEventListener("click", () => {
+		const newNumberForm = document.getElementById("newNumberForm");
+		
+        if (newNumberForm) {
+			newNumberForm.classList.remove("hidden");
+			newNumberForm.classList.add("number-form");
+            newNumberForm.addEventListener("submit", (event) => {
+				event.preventDefault;
+				updateNumber();
+            });
+            
+
+		}
+	});
 });
