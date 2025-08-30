@@ -88,8 +88,8 @@ const showCurrentNumber = (numberTracker: numberTracker) => {
 	}
 };
 
-const updateNumber = () => {
-	console.log("funcion conectada");
+const updateNumber = (userValue: number, tracker: numberTracker) => {
+	tracker.insertNumber(userValue);
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -125,9 +125,19 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (newNumberForm) {
 			newNumberForm.classList.remove("hidden");
 			newNumberForm.classList.add("number-form");
+
 			newNumberForm.addEventListener("submit", (event) => {
-				event.preventDefault;
-				updateNumber();
+				event.preventDefault();
+				const inputElement = document.getElementById(
+					"newNumber"
+				) as HTMLInputElement | null;
+				if (inputElement) {
+					const userValue = inputElement.value;
+					updateNumber(+userValue, numberTracker);
+					showCurrentNumber(numberTracker);
+					newNumberForm.classList.add("hidden");
+					newNumberForm.classList.remove("number-form");
+				}
 			});
 		}
 	});
