@@ -1,6 +1,6 @@
 import "./style.css";
 
-import { Tracker } from "./utilities/Tracker";
+import { numberTracker } from "./numberTracker";
 import { updateNumber } from "./utilities/updateNumber";
 import { validateInput } from "./utilities/validations";
 import {
@@ -8,23 +8,6 @@ import {
 	showOrHideElement,
 	showCurrentNumber,
 } from "./utilities/DOMmanipulation";
-
-const numberTracker: Tracker = {
-	currentNumber: 1,
-	nextNumber(): number {
-		return (this.currentNumber = ++this.currentNumber);
-	},
-	previousNumber(): number {
-		return (this.currentNumber = --this.currentNumber);
-	},
-	insertNumber(newNumber: number): number {
-		return (this.currentNumber = newNumber);
-	},
-
-	resetNumberTracker(): number {
-		return (this.currentNumber = 0);
-	},
-};
 
 document.addEventListener("DOMContentLoaded", () => {
 	showCurrentNumber(numberTracker);
@@ -67,8 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
 				const inputElement = document.getElementById(
 					"newNumber"
 				) as HTMLInputElement | null;
-				
-                if (inputElement) {
+
+				if (inputElement) {
 					const userValue = inputElement.value;
 					const errorMessage = validateInput(userValue, numberTracker);
 
@@ -76,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						updateNumber(+userValue, numberTracker);
 						showCurrentNumber(numberTracker);
 						showOrHideElement(newNumberForm);
+						inputElement.value = "";
 					} else {
 						showOrHideElement(errorDiv);
 						errorDiv.style.display = "block";
