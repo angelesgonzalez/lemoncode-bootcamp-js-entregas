@@ -75,9 +75,11 @@ const numberTracker: numberTracker = {
 	},
 };
 
+const editCurrentNumber = (currentNumber: number): string =>
+	currentNumber.toString().padStart(2, "0");
+
 const showCurrentNumber = (numberTracker: numberTracker) => {
-	const currentNumber = `${numberTracker.currentNumber}`;
-	const currentNumberEdited = currentNumber.padStart(2, "0");
+	const currentNumberEdited = editCurrentNumber(numberTracker.currentNumber);
 
 	const currentNumberDOM = document.getElementById("numberTurn");
 
@@ -119,16 +121,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	showInsertBtn?.addEventListener("click", () => {
 		const newNumberForm = document.getElementById("newNumberForm");
-		
-        if (newNumberForm) {
+
+		if (newNumberForm) {
 			newNumberForm.classList.remove("hidden");
 			newNumberForm.classList.add("number-form");
-            newNumberForm.addEventListener("submit", (event) => {
+			newNumberForm.addEventListener("submit", (event) => {
 				event.preventDefault;
 				updateNumber();
-            });
-            
-
+			});
 		}
 	});
 });
