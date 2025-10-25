@@ -1,3 +1,5 @@
+import { Card } from "./Card";
+
 const suits = ["oro", "copa", "espada", "bastos"];
 
 const ranks = [
@@ -13,7 +15,7 @@ const ranks = [
 	{ name: "12", value: 0.5 },
 ];
 
-export const createDeck = () => {
+export const createDeck = (): Card[] => {
 	const deck = [];
 
 	for (const suit of suits) {
@@ -28,7 +30,3 @@ export const createDeck = () => {
 
 	return deck;
 };
-
-
-
-
