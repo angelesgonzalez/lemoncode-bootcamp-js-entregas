@@ -6,4 +6,6 @@ export const startGame = (): void => {
 	gameState.roundTotal = 0;
 	gameState.gamePhase = "playing";
 	gameState.deck = createDeck().sort(() => Math.random() - 0.5);
+
 };
+
