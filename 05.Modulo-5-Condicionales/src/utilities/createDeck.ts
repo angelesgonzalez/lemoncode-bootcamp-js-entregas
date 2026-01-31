@@ -30,3 +30,4 @@ export const createDeck = (): Card[] => {
 
 	return deck;
 };
+
