@@ -5,7 +5,7 @@ export const renderCard = ({ drawnCards }: GameState) => {
 	if (!drawnCard) return;
 
 	const cardImg = document.createElement("img") as HTMLImageElement;
-	cardImg.src = `public/assets/card-${drawnCard.suit}-${drawnCard.name}.jpg`;
+	cardImg.src = `/assets/card-${drawnCard.suit}-${drawnCard.name}.jpg`;
 	cardImg.alt = `${drawnCard.name} de ${drawnCard.suit}`;
 	cardImg.classList.add("card-image");
 
