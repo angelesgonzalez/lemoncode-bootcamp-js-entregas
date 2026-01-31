@@ -1,9 +1,17 @@
 import { Card } from "../utilities/Card";
+
 export type GamePhase = "playing" | "gameOver";
 
-export const gameState = {
+export const gameState: {
+	score: number;
+	roundTotal: number;
+	deck: Card[];
+	gamePhase: GamePhase;
+	drawnCards: Card[];
+} = {
 	score: 0,
 	roundTotal: 0,
-	deck: [] as Card[],
-	gamePhase: "playing" as GamePhase,
+	deck: [],
+	gamePhase: "playing",
+	drawnCards: [],
 };
