@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7 y medio</title>
+</head>
+
+<body>
+  <div id="app">
+
+    <div id="gameStartContainer" class="scene-container">
+      <h1 class="game-title">¡A jugar al 7 y medio!</h1>
+      <button id="startGameBtn" class="btn btn-primary">Empezar a jugar</button>
+    </div>
+
+    <div id="gameOverContainer" class="modal-container hidden" aria-hidden="true">
+      <div class="modal-content">
+        <h2 class="modal-title">Fin de la partida</h2>
+        <p id="gameOverReason" class="modal-message"></p>
+        <div class="score-summary">
+          <h3>Ultima ronda: <span id="lastRound">0</span></h3>
+          <h3>Score final: <span id="finalScore">0</span></h3>
+        </div>
+        <button id="restartGameBtn" class="btn btn-primary">Jugar de nuevo</button>
+      </div>
+    </div>
+
+    <div id="roundContainer" class="modal-container hidden" aria-hidden="true">
+      <div class="modal-content">
+        <h2 class="modal-title">Resultado</h2>
+        <p id="roundMessage" class="modal-message"></p>
+        <div class="score-summary">
+          <h3>Has ganado: <span id="pointsToAdd">0</span> pts</h3>
+          <h3>Score final: <span id="currentScore">0</span> pts</h3>
+        </div>
+        <div class="button-group">
+          <button id="continueRound" class="btn btn-primary">Seguir Jugando</button>
+          <button id="quitGame" class="btn btn-secondary">Terminar Juego</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="gameContainer" class="game-board hidden" aria-hidden="true">
+      <header class="game-header">
+        <h2 class="game-title-small">7 y medio</h2>
+        <div class="game-stats">
+          <div class="stat-box">
+            <span class="stat-label">Mazo:</span>
+            <span id="deckCounter" class="stat-value">40</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">Puntos:</span>
+            <span id="scoreCounter" class="stat-value">0</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="game-main">
+        <div class="round-total-display">
+          <p>Total Ronda</p>
+          <span id="roundTotalCounter" class="big-score">0</span>
+        </div>
+        <section class="cards-container" id="cards-container">
+          <img src="/assets/card-cover.jpg" alt="Carta" class="card-image" />
+        </section>
+      </main>
+
+      <footer class="game-controls">
+        <button id="drawCardBtn" class="btn btn-primary">Dame carta</button>
+        <button id="standBtn" class="btn btn-secondary">Me Planto</button>
+      </footer>
+    </div>
+
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
