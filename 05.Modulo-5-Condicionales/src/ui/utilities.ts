@@ -10,8 +10,9 @@ export const restartCards = () => {
 	cardsContainer.innerHTML = "";
 
 	const img = document.createElement("img");
-	img.src = "/public/assets/card-cover.jpg";
+	img.src = "/assets/card-cover.jpg";
 	img.alt = "Cover";
+	img.classList.add("card-image");
 
 	cardsContainer.appendChild(img);
 };
