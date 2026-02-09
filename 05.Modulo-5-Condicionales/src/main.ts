@@ -5,6 +5,7 @@ import { renderStartGame } from "./ui/renderStartGame";
 import { renderScore } from "./ui/renderScore";
 import { gameState } from "./state/gameState";
 import { bindDrawnButton } from "./ui/bindDrawButton";
+import { bindRestartButton } from "./ui/bindRestartButton";
 import { onDrawnCard } from "./game/onDrawCard";
 
 bindStartButton(() => {
@@ -16,3 +17,4 @@ bindStartButton(() => {
 bindDrawnButton(() => {
 	onDrawnCard(gameState);
 });
+

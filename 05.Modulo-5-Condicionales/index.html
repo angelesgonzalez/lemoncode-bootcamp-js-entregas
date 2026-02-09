@@ -16,10 +16,12 @@
       <button id="startGameBtn">Empezar a jugar </button>
     </div>
 
-    <div id="gameOverContainer">
-
-
-
+    <div id="gameOverContainer" class="hidden" aria-hidden="true">
+      <h2>Fin de la partida</h2>
+      <p id="gameOverReason"></p>
+      <h3>Ultima ronda: <span id="lastRound">0</span> </h3>
+      <h3>Score final: <span id="finalScore">0</span> </h3>
+      <button id="restartGameBtn">Jugar de nuevo </button>
     </div>
 
     <div id="gameContainer" class="hidden" aria-hidden="true">
@@ -33,6 +35,7 @@
       <button id="drawCardBtn">Dame un carta</button><button id="standBtn">Me Planto
       </button>
     </div>
+
   </div>
   <script type="module" src="/src/main.ts"></script>
 </body>
