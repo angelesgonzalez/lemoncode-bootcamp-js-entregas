@@ -3,11 +3,6 @@ export const renderGameOver = (
 	roundTotal: number,
 	score: number,
 ) => {
-	//ocultar gameContainer
-	//ensenar gameOverContainer
-	//ensenar roundTotal
-	//ensenar score total
-
 	const gameContainer = document.getElementById(
 		"gameContainer",
 	) as HTMLDivElement;
@@ -32,8 +27,11 @@ export const renderGameOver = (
 		finalScore.textContent = `${score}`;
 	}
 
-	if (gameContainer && gameOverContainer) {
+	if (gameContainer) {
 		gameContainer.classList.add("hidden");
+	}
+
+	if (gameOverContainer) {
 		gameOverContainer.classList.remove("hidden");
 	}
 };

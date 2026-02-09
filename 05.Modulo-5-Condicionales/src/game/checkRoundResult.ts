@@ -7,9 +7,6 @@ export type RoundResolution = {
 	gameOver: boolean;
 };
 
-//esto pasa cada vez que el usuario clica en "me planto"
-// click on me planto -> checkRoundStatus
-
 export const checkRoundResult = (
 	roundTotal: number,
 	deck: Card[],
@@ -24,7 +21,7 @@ export const checkRoundResult = (
 		};
 	}
 
-	if (roundTotal < 4) {
+	if (roundTotal <= 4) {
 		return {
 			pointsToAdd: 0,
 			message: "Has sido muy conservador.",

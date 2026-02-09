@@ -1,19 +1,22 @@
-//activva cuando el usuario se planta
-//llama checkRounResults 
-//dependiendo del objeto, llama
+import { GameState } from "../state/gameState";
+import { checkRoundResult } from "./checkRoundResult";
+import { renderRoundResults } from "../ui/renderRoundResult";
 
-// Hace
+export const onStand = (gameState: GameState) => {
+	const roundResolution = checkRoundResult(
+		gameState.roundTotal,
+		gameState.deck,
+	);
 
-// marca que el jugador se ha plantado
+	gameState.pastRound = roundResolution.pointsToAdd;
 
-// llama a checkRoundResults
+	gameState.score += roundResolution.pointsToAdd;
 
-// actualiza score y/o gamePhase
+	gameState.roundTotal = 0;
 
-// prepara la siguiente ronda si procede
-
-// export type StandResult = {
-// 	message: string;
-// 	scoreDelta?: number;
-// 	endGame: boolean;
-// };
+	renderRoundResults(
+		roundResolution.message,
+		roundResolution.pointsToAdd,
+		gameState.score,
+	);
+};
